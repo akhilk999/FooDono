@@ -23,21 +23,28 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-          appBar: AppBar(
-            title: Center(
-              child: Text('Enter Your ZipCode'),
-            ),
-            backgroundColor: Colors.green[700],
+      home: Scaffold(
+        appBar: AppBar(
+          title: Center(
+            child: Text('Enter Your ZipCode'),
           ),
-          body: GoogleMap(
-              onMapCreated: _onMapCreated,
-              initialCameraPosition: CameraPosition(
-                target: _center,
-                zoom: 11.0,
+          backgroundColor: Colors.green[700],
+        ),
+        body: Container(
+          alignment: Alignment(0.0, -0.7),
+          child: FractionallySizedBox(
+              widthFactor: 0.9,
+              heightFactor: 0.6,
+              child: GoogleMap(
+                  onMapCreated: _onMapCreated,
+                  initialCameraPosition: CameraPosition(
+                    target: _center,
+                    zoom: 11.0,
+                  )
               )
           ),
-        )
+        ),
+      ),
     );
   }
 }
