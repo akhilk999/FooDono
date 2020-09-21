@@ -13,8 +13,8 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   GoogleMapController mapController;
-
-  final LatLng _center = const LatLng(33.0198, -96.6989);
+  bool _initialized = false;
+  bool _error = false;
 
   void _onMapCreated(GoogleMapController controller) {
     mapController= controller;
@@ -30,19 +30,61 @@ class _MyAppState extends State<MyApp> {
           ),
           backgroundColor: Colors.green[700],
         ),
-        body: Container(
-          alignment: Alignment(0.0, -0.7),
-          child: FractionallySizedBox(
-              widthFactor: 0.9,
-              heightFactor: 0.6,
-              child: GoogleMap(
+        body: Column(
+          children: [
+            Container(
+              height: 20,
+            ),
+            Container(
+              height: 325,
+                width: 350,
+                child: GoogleMap(
                   onMapCreated: _onMapCreated,
                   initialCameraPosition: CameraPosition(
-                    target: _center,
-                    zoom: 11.0,
+                  target: LatLng(33.0198, -96.6989), zoom: 16),
                   )
-              )
+              ),
+            Container(
+              height: 50,
+              width: 190,
+              child: TextField(
+                onSubmitted: (String str) {
+                },
+              ),
+            ),
+            Container(
+              height: 75.0,
+              width: 250.0,
+              padding: EdgeInsets.fromLTRB(50,20,50,20),
+              child: RaisedButton(
+                child: Text("Submit"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SecondRoute())
+                  );
+                },
+              ),
+            )
+          ]
           ),
+        ),
+      );
+  }
+}
+class SecondRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Second Route"),
+      ),
+      body: Center(
+        child: RaisedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text("Go back"),
         ),
       ),
     );
