@@ -44,17 +44,22 @@ class _MyAppState extends State<MyApp> {
                   target: LatLng(33.0198, -96.6989), zoom: 16),
                   )
               ),
-            Container(
-              height: 50,
-              width: 190,
-              child: TextField(
-                onSubmitted: (String str) {
-                },
+            Row(
+            children: [
+              Container(
+                width: 45,
               ),
-            ),
-            Container(
+              Container(
+                height: 50,
+                width: 140,
+                child: TextField(
+                  onSubmitted: (String str) {
+                  },
+                ),
+              ),
+              Container(
               height: 75.0,
-              width: 250.0,
+              width: 200.0,
               padding: EdgeInsets.fromLTRB(50,20,50,20),
               child: RaisedButton(
                 child: Text("Submit"),
@@ -65,6 +70,8 @@ class _MyAppState extends State<MyApp> {
                   );
                 },
               ),
+            )
+            ]
             )
           ]
           ),
