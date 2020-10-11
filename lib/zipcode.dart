@@ -1,27 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'location.dart';
 
-void main() {
-  runApp(MaterialApp(
-      home: MyApp()
-  ));
-}
-
-class MyApp extends StatefulWidget {
-  // This widget is the root of your application.
+class ZipCode extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends State<ZipCode> {
   GoogleMapController mapController;
   bool _initialized = false;
   bool _error = false;
 
   void _onMapCreated(GoogleMapController controller) {
-    mapController= controller;
+    mapController = controller;
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,10 +58,11 @@ class _MyAppState extends State<MyApp> {
               child: RaisedButton(
                 child: Text("Submit"),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SecondRoute())
-                  );
+                  Navigator.pop(context);
+                  /*Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Location())
+                  );*/
                 },
               ),
             )
@@ -77,24 +71,6 @@ class _MyAppState extends State<MyApp> {
           ]
           ),
       );
-  }
-}
-class SecondRoute extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Second Route"),
-      ),
-      body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text("Go back"),
-        ),
-      ),
-    );
   }
 }
 
