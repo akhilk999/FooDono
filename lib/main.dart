@@ -36,7 +36,8 @@ class MyApp extends StatelessWidget {
             ),
             Flexible(
               child: FractionallySizedBox(
-                widthFactor: 0.37,
+                widthFactor: 0.4,
+                heightFactor: 0.23,
                 child: RaisedButton(
                   color: Colors.grey[200],
                   shape: RoundedRectangleBorder(
@@ -62,7 +63,8 @@ class MyApp extends StatelessWidget {
             ),
             Flexible(
               child: FractionallySizedBox(
-                widthFactor: 0.37,
+                widthFactor: 0.4,
+                heightFactor: 0.23,
                 child: RaisedButton(
                   color: Colors.grey[200],
                   shape: RoundedRectangleBorder(
