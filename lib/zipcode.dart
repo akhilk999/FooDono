@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/services.dart';
 import 'location.dart';
+import 'main.dart';
 
 class ZipCode extends StatefulWidget {
   @override
@@ -114,12 +115,7 @@ class _MyAppState extends State<ZipCode> {
                   child: Text("Submit",style: TextStyle(color: Colors.grey[200],)),
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
-                      Navigator.pop(context);
-
-                      /*Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Location())
-                    );*/
+                        showAlertDialog(context);
                     }
                   },
                 ),
@@ -132,4 +128,41 @@ class _MyAppState extends State<ZipCode> {
       );
   }
 }
+
+showAlertDialog(BuildContext context) {
+  Widget cancel = FlatButton(
+    textColor: Colors.green[700],
+    child: Text('CANCEL'),
+    onPressed: () {
+      Navigator.of(context).pop();
+    },
+  );
+  Widget cont = FlatButton(
+    textColor: Colors.green[700],
+    child: Text('ACCEPT'),
+    onPressed: () {
+      Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => MyApp())
+      );
+    },
+  );
+
+
+  AlertDialog alert = AlertDialog(
+    title: Text('Submit'),
+    content: Text('Are you sure you want to submit?'),
+    actions: [
+      cancel,
+      cont,
+    ],
+  );
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
+
 
