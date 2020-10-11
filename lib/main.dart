@@ -14,20 +14,45 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
+          backgroundColor: Colors.green[700],
+          title: Center(
           child: Text("FooDono"),
         )
       ),
       body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ZipCode())
-            );
-          },
-          child: Text("Visitor"),
-        ),
+          child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              child: RaisedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ZipCode())
+                  );
+                },
+                child: Text("Visitor"),
+              ),
+            ),
+            Flexible(
+              child: FractionallySizedBox(
+                heightFactor: 0.4,
+              ),
+            ),
+            Container(
+              child: RaisedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ZipCode())
+                  );
+                },
+                child: Text("Food Banks"),
+              ),
+            )
+          ],
+        )
       ),
     );
   }
