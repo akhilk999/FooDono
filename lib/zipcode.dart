@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(
+      home: MyApp()
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -22,8 +24,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: Center(
             child: Text('Enter Your ZipCode'),
@@ -75,7 +76,6 @@ class _MyAppState extends State<MyApp> {
             )
           ]
           ),
-        ),
       );
   }
 }
@@ -97,3 +97,4 @@ class SecondRoute extends StatelessWidget {
     );
   }
 }
+
