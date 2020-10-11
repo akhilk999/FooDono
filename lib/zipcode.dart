@@ -32,14 +32,23 @@ class _MyAppState extends State<ZipCode> {
         //resizeToAvoidBottomPadding: false,
         appBar: AppBar(
           centerTitle: true,
-          title: Text('Enter Your ZipCode'),
+          title: Text('FooDono'),
           backgroundColor: Colors.green[700],
         ),
         body: SingleChildScrollView(
           child: Column(
             children: [
               Container(
-                height: 20,
+                height: 30,
+              ),
+              Container(
+                child: Text(
+                  'Enter Your ZipCode',
+                    style: TextStyle(fontSize: 25)
+                )
+              ),
+              Container(
+                height: 30,
               ),
               Container(
                 height: 325,
@@ -98,7 +107,11 @@ class _MyAppState extends State<ZipCode> {
                 width: 200.0,
                 padding: EdgeInsets.fromLTRB(50,20,50,20),
                 child: RaisedButton(
-                  child: Text("Submit"),
+                  color: Colors.green[700],
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0)
+                  ),
+                  child: Text("Submit",style: TextStyle(color: Colors.grey[200],)),
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
                       Navigator.pop(context);
@@ -118,9 +131,5 @@ class _MyAppState extends State<ZipCode> {
         ),
       );
   }
-}
-
-textField() {
-
 }
 

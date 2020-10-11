@@ -13,43 +13,73 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          backgroundColor: Colors.green[700],
-          title: Center(
-          child: Text("FooDono"),
-        )
-      ),
+      backgroundColor: Colors.green[600],
       body: Center(
           child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              child: RaisedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ZipCode())
-                  );
-                },
-                child: Text("Visitor"),
+              child:Text(
+                  'FoodDono',
+                  style: TextStyle(
+                      fontSize: 40,
+                    color: Colors.white,
+                      fontWeight: FontWeight.bold
+                  )
               ),
             ),
             Flexible(
               child: FractionallySizedBox(
-                heightFactor: 0.4,
+                heightFactor: 0.7,
               ),
             ),
-            Container(
-              child: RaisedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ZipCode())
-                  );
-                },
-                child: Text("Food Banks"),
+            Flexible(
+              child: FractionallySizedBox(
+                widthFactor: 0.37,
+                child: RaisedButton(
+                  color: Colors.grey[200],
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0)
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ZipCode())
+                    );
+                  },
+                  child: Text(
+                      "Visitor",
+                      style: TextStyle(fontSize: 20,color: Colors.green[800],)
+                  ),
+                ),
+              )
+            ),
+            Flexible(
+              child: FractionallySizedBox(
+                heightFactor: 0.3,
               ),
+            ),
+            Flexible(
+              child: FractionallySizedBox(
+                widthFactor: 0.37,
+                child: RaisedButton(
+                  color: Colors.grey[200],
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0)
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ZipCode())
+                    );
+                  },
+                  child: Text(
+                      "Food Banks",
+                      style: TextStyle(fontSize: 20,color: Colors.green[800])
+                  ),
+                ),
+              )
             )
           ],
         )
