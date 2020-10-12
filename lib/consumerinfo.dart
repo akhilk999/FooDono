@@ -7,13 +7,6 @@ import 'dart:convert';
 import 'package:zipcode_screen/models/model.dart';
 import 'confirm.dart';
 
-void main() {
-  runApp(MaterialApp(
-    title: 'Navigation Basics',
-    home: Consumer(),
-  ));
-}
-
 class Consumer extends StatefulWidget {
   // This widget is the root of your application.
   @override
@@ -74,32 +67,37 @@ class _ConsumerState extends State<Consumer> {
               title: Text("FooDono",),
               backgroundColor: Colors.green[700],
             ),
-            body: SingleChildScrollView(
-              child: Column(
+            body: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                Container(
-                  child: Text(
+                    Container(
+                    child: Text(
                     "Minnie's Food Pantry",
-                  style: TextStyle(fontSize: 25),
+                  style: TextStyle(fontSize: 22),
                   ),
-              padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
                  ),
+                    Container(
+                      height: 20,
+                    ),
                 Container(
                   child: Text(
                     "661 18th St",
-                    style: TextStyle(fontSize: 25),
+                    style: TextStyle(fontSize: 22),
                   ),
-                  padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
                 ),
+                    Container(
+                      height: 20,
+                    ),
                 Container(
                   child: Text(
-                    "Oct 15th @ 2:00 PM",
-                    style: TextStyle(fontSize: 25),
+                    "2020-8-14 to 2020-8-15 @ 2:00 PM to 5:00 PM",
+                    style: TextStyle(fontSize: 16),
                   ),
-                  padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
                 ),
+                    Container(
+                      height: 20,
+                    ),
                     Container(
                         height: 325,
                         width: 350,
@@ -108,21 +106,20 @@ class _ConsumerState extends State<Consumer> {
                           initialCameraPosition: CameraPosition(
                               target: LatLng(33.024817, -96.706692), zoom: 16),
                         ),
-                        padding: EdgeInsets.fromLTRB(25,0,0,0),
+                    ),
+                    Container(
+                      height: 20,
                     ),
                 Container(
-                  height: 75.0,
-                  width: 350.0,
                   child: Text(
                     "Offers Food",
-                    style: TextStyle(fontSize: 25),
+                    style: TextStyle(fontSize: 18),
                   ),
-                  padding: EdgeInsets.fromLTRB(90, 25, 60, 20),
                 ),
+                    Container(
+                      height: 23,
+                    ),
                 Container(
-                  height: 75.0,
-                  width: 300.0,
-                  padding: EdgeInsets.fromLTRB(50, 20, 50, 20),
                   child: RaisedButton(
                       color: Colors.green[700],
                       shape: RoundedRectangleBorder(
@@ -164,7 +161,7 @@ class _ConsumerState extends State<Consumer> {
                       }),
                 )
               ]),
-            )));
+            ));
     //);
 /*
     FutureBuilder(

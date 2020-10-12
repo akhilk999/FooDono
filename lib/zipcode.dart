@@ -53,7 +53,7 @@ class _MyAppState extends State<ZipCode> {
                 height: 30,
               ),
               Container(
-                height: 325,
+                  height: 325,
                   width: 350,
                   child: GoogleMap(
                     onMapCreated: _onMapCreated,
