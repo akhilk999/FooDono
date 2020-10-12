@@ -28,8 +28,6 @@ class Producer extends StatefulWidget {
 
 class _ProducerState extends State<Producer> {
   // This widget is the root of your application.
-  DateTime _dateTime;
-
   final formKey = GlobalKey<FormState>();
   final textControl = TextEditingController();
   final textControl2 = TextEditingController();
@@ -41,24 +39,38 @@ class _ProducerState extends State<Producer> {
       charLength2 = value.length;
     });
   }
-  var formatter = new DateFormat('yyyy-MM-dd');
-  DateTime fromDate =
-  DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
-  DateTime toDate =
-  DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
 
+  var formatter = new DateFormat('yyyy-MM-dd');
+  DateTime fromDate = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+  DateTime toDate = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+  TimeOfDay _time = TimeOfDay.now();
+  TimeOfDay toTime = TimeOfDay.now();
+TimeOfDay fromTime = TimeOfDay.now();
   Future<DateTime> selectDate(BuildContext context, DateTime _date) async {
     final DateTime picked = await showDatePicker(
       context: context,
       initialDate: _date,
       firstDate: DateTime(2018),
-      lastDate: DateTime(2030),
+      lastDate: DateTime(2022),
     );
-    if (picked != null) {
+    if (picked != null && picked != _date) {
       _date = picked;
     }
     return _date;
   }
+
+  Future<Null> selectTime(BuildContext context,   TimeOfDay _timed) async{
+    final TimeOfDay picked = await showTimePicker(
+      context: context,
+      initialTime: _time
+    );
+    if (picked != null && picked != _time) {
+      setState(() {
+        _time = picked;
+      });
+    }
+  }
+
 
   @override
   void dispose() {
@@ -276,6 +288,72 @@ class _ProducerState extends State<Producer> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Container(
+                    width: 150,
+                    child: Text(
+                      "Start Time:",
+                      style: TextStyle(fontSize: 15),
+                      textAlign: TextAlign.right,
+                    ),
+                  ),
+                  Container(
+                    width: 20,
+                  ),
+                  Container(
+                    width: 75,
+                    child:Text('${_time.format(context)}'),
+                  ),
+                  Container(
+                    width: 50,
+                    child:IconButton(
+                      icon: Icon(Icons.alarm),
+                      onPressed: () async {
+                        selectTime(context, fromTime);
+                      },
+                    ),
+                  ),
+                  Container(
+                    width: 75,
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 150,
+                    child: Text(
+                      "End Time:",
+                      style: TextStyle(fontSize: 15),
+                      textAlign: TextAlign.right,
+                    ),
+                  ),
+                  Container(
+                    width: 20,
+                  ),
+                  Container(
+                    width: 75,
+                    child:Text('${_time.format(context)}'),
+                  ),
+                  Container(
+                    width: 50,
+                    child:IconButton(
+                      icon: Icon(Icons.alarm),
+                      onPressed: () async {
+                        selectTime(context, toTime);
+                      },
+                    ),
+                  ),
+                  Container(
+                    width: 75,
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
                   RaisedButton(
                     color: Colors.green[700],
                     shape: RoundedRectangleBorder(
@@ -304,7 +382,7 @@ class _ProducerState extends State<Producer> {
                     },
                   ),
                 ],
-              )
+              ),
             ],
           ),
         )
