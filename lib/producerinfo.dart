@@ -2,20 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'main.dart';
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Producer(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
+import 'confirm.dart';
 
 class Producer extends StatefulWidget {
   Producer({Key key, this.title}) : super(key: key);
@@ -53,6 +40,7 @@ TimeOfDay fromTime = TimeOfDay.now();
       firstDate: DateTime(2018),
       lastDate: DateTime(2022),
     );
+
     if (picked != null && picked != _date) {
       _date = picked;
     }
@@ -402,10 +390,10 @@ showAlertDialog(BuildContext context) {
     textColor: Colors.green[700],
     child: Text('ACCEPT'),
     onPressed: () {
-      /*Navigator.push(
+      Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => Confirm())
-      );*/
+      );
     },
   );
 

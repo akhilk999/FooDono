@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/services.dart';
+import 'package:zipcode_screen/consumerinfo.dart';
 import 'location.dart';
 import 'main.dart';
 
@@ -143,7 +144,7 @@ showAlertDialog(BuildContext context) {
     onPressed: () {
       Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => MainScreen())
+          MaterialPageRoute(builder: (context) => Consumer())
       );
     },
   );
