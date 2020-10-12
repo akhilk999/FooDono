@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'zipcode.dart';
+import 'producerinfo.dart';
 
 void main() {
   runApp(MaterialApp(
-      home: MyApp()
+      home: MainScreen()
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MainScreen extends StatelessWidget {
   // This widget is the root of your application.
 
   @override
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
           children: [
             Container(
               child:Text(
-                  'FoodDono',
+                  'FooDono',
                   style: TextStyle(
                       fontSize: 40,
                     color: Colors.white,
@@ -73,7 +74,7 @@ class MyApp extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ZipCode())
+                        MaterialPageRoute(builder: (context) => Producer())
                     );
                   },
                   child: Text(
