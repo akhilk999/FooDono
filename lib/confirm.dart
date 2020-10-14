@@ -14,24 +14,15 @@ class Confirm extends StatelessWidget {
         children: [
           Container(
             margin: EdgeInsets.all(20.0),
-            height: 75.0,
+            height: 120.0,
             width: 350.0,
             padding: EdgeInsets.fromLTRB(50, 20, 50, 20),
-            child: Text(
-              "You are confirmed",
-              style: TextStyle(fontSize: 30),
-            ),
+            child: Text("Your appointment is confirmed",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 30),
+                softWrap: true),
           ),
-          Container(
-            margin: EdgeInsets.all(20.0),
-            height: 75.0,
-            width: 350.0,
-            padding: EdgeInsets.fromLTRB(25, 25, 20, 10),
-            child: Text(
-              "When do you want to be notified?",
-              style: TextStyle(fontSize: 20),
-            ),
-          ),
+
           /*
           Container(
             margin: EdgeInsets.all(20.0),
@@ -49,14 +40,17 @@ class Confirm extends StatelessWidget {
             child: RaisedButton(
               color: Colors.green[700],
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5.0)
-              ),
-              onPressed: (){
+                  borderRadius: BorderRadius.circular(5.0)),
+              onPressed: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MainScreen()),);
+                  context,
+                  MaterialPageRoute(builder: (context) => MainScreen()),
+                );
               },
-              child: Text("Confirm",style: TextStyle(color: Colors.grey[200],)),
+              child: Text("Back to Main Screen",
+                  style: TextStyle(
+                    color: Colors.grey[200],
+                  )),
             ),
           )
         ],

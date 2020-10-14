@@ -12,7 +12,6 @@ class Producer extends StatefulWidget {
   _ProducerState createState() => _ProducerState();
 }
 
-
 class _ProducerState extends State<Producer> {
   // This widget is the root of your application.
   final formKey = GlobalKey<FormState>();
@@ -28,11 +27,13 @@ class _ProducerState extends State<Producer> {
   }
 
   var formatter = new DateFormat('yyyy-MM-dd');
-  DateTime fromDate = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
-  DateTime toDate = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+  DateTime fromDate =
+      DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+  DateTime toDate =
+      DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
   TimeOfDay _time = TimeOfDay.now();
   TimeOfDay toTime = TimeOfDay.now();
-TimeOfDay fromTime = TimeOfDay.now();
+  TimeOfDay fromTime = TimeOfDay.now();
   Future<DateTime> selectDate(BuildContext context, DateTime _date) async {
     final DateTime picked = await showDatePicker(
       context: context,
@@ -47,11 +48,9 @@ TimeOfDay fromTime = TimeOfDay.now();
     return _date;
   }
 
-  Future<Null> selectTime(BuildContext context,   TimeOfDay _timed) async{
-    final TimeOfDay picked = await showTimePicker(
-      context: context,
-      initialTime: _time
-    );
+  Future<Null> selectTime(BuildContext context, TimeOfDay _timed) async {
+    final TimeOfDay picked =
+        await showTimePicker(context: context, initialTime: _time);
     if (picked != null && picked != _time) {
       setState(() {
         _time = picked;
@@ -59,22 +58,22 @@ TimeOfDay fromTime = TimeOfDay.now();
     }
   }
 
-
   @override
   void dispose() {
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //resizeToAvoidBottomPadding: false,
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('FooDono'),
-        backgroundColor: Colors.green[700],
-      ),
-      body: SingleChildScrollView(
-        child: Form(
+        //resizeToAvoidBottomPadding: false,
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text('FooDono'),
+          backgroundColor: Colors.green[700],
+        ),
+        body: SingleChildScrollView(
+            child: Form(
           key: formKey,
           child: Column(
             children: [
@@ -82,11 +81,8 @@ TimeOfDay fromTime = TimeOfDay.now();
                 height: 30,
               ),
               Container(
-                  child: Text(
-                      "Enter Your Food Bank's Info",
-                      style: TextStyle(fontSize: 25)
-                  )
-              ),
+                  child: Text("Enter Your Food Bank's Info",
+                      style: TextStyle(fontSize: 25))),
               Container(
                 height: 30,
               ),
@@ -111,7 +107,8 @@ TimeOfDay fromTime = TimeOfDay.now();
                       keyboardType: TextInputType.text,
                       controller: textControl,
                       autocorrect: true,
-                      decoration: InputDecoration(hintText: "Enter Group's Name Here"),
+                      decoration:
+                          InputDecoration(hintText: "Enter Group's Name Here"),
                       onChanged: _onChanged,
                       validator: (value) {
                         if (value.isEmpty) {
@@ -133,10 +130,10 @@ TimeOfDay fromTime = TimeOfDay.now();
                   Container(
                     width: 150,
                     child: Text(
-                          "Your Group's ZipCode:",
-                          style: TextStyle(fontSize: 15),
-                        textAlign: TextAlign.right,
-                      ),
+                      "Your Group's ZipCode:",
+                      style: TextStyle(fontSize: 15),
+                      textAlign: TextAlign.right,
+                    ),
                   ),
                   Container(
                     width: 20,
@@ -151,7 +148,8 @@ TimeOfDay fromTime = TimeOfDay.now();
                       ],
                       controller: textControl2,
                       autocorrect: true,
-                      decoration: InputDecoration(hintText: "Enter Group's ZipCode Here"),
+                      decoration: InputDecoration(
+                          hintText: "Enter Group's ZipCode Here"),
                       onChanged: _onChanged,
                       validator: (value) {
                         if (value.isEmpty) {
@@ -174,12 +172,12 @@ TimeOfDay fromTime = TimeOfDay.now();
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                      width: 150,
-                      child: Text(
-                            "Your Group's Address:",
-                            style: TextStyle(fontSize: 15),
-                          textAlign: TextAlign.right,
-                        ),
+                    width: 150,
+                    child: Text(
+                      "Your Group's Address:",
+                      style: TextStyle(fontSize: 15),
+                      textAlign: TextAlign.right,
+                    ),
                   ),
                   Container(
                     width: 20,
@@ -189,7 +187,8 @@ TimeOfDay fromTime = TimeOfDay.now();
                     child: TextFormField(
                       controller: textControl3,
                       autocorrect: true,
-                      decoration: InputDecoration(hintText: "Enter Group's Address Here"),
+                      decoration: InputDecoration(
+                          hintText: "Enter Group's Address Here"),
                       onChanged: _onChanged,
                       validator: (value) {
                         if (value.isEmpty) {
@@ -223,16 +222,16 @@ TimeOfDay fromTime = TimeOfDay.now();
                     width: 75,
                     child: Text('${formatter.format(fromDate)}'),
                   ),
-                    Container(
-                      width: 50,
-                      child: IconButton(
-                        icon: Icon(Icons.calendar_today),
-                        onPressed: () async {
-                          fromDate = await selectDate(context, fromDate);
-                          setState(() {});
-                        },
-                      ),
+                  Container(
+                    width: 50,
+                    child: IconButton(
+                      icon: Icon(Icons.calendar_today),
+                      onPressed: () async {
+                        fromDate = await selectDate(context, fromDate);
+                        setState(() {});
+                      },
                     ),
+                  ),
                   Container(
                     width: 75,
                   ),
@@ -255,11 +254,11 @@ TimeOfDay fromTime = TimeOfDay.now();
                   ),
                   Container(
                     width: 75,
-                    child:Text('${formatter.format(toDate)}'),
+                    child: Text('${formatter.format(toDate)}'),
                   ),
                   Container(
                     width: 50,
-                    child:IconButton(
+                    child: IconButton(
                       icon: Icon(Icons.calendar_today),
                       onPressed: () async {
                         toDate = await selectDate(context, toDate);
@@ -289,11 +288,11 @@ TimeOfDay fromTime = TimeOfDay.now();
                   ),
                   Container(
                     width: 75,
-                    child:Text('${_time.format(context)}'),
+                    child: Text('${_time.format(context)}'),
                   ),
                   Container(
                     width: 50,
-                    child:IconButton(
+                    child: IconButton(
                       icon: Icon(Icons.alarm),
                       onPressed: () async {
                         selectTime(context, fromTime);
@@ -322,11 +321,11 @@ TimeOfDay fromTime = TimeOfDay.now();
                   ),
                   Container(
                     width: 75,
-                    child:Text('${_time.format(context)}'),
+                    child: Text('${_time.format(context)}'),
                   ),
                   Container(
                     width: 50,
-                    child:IconButton(
+                    child: IconButton(
                       icon: Icon(Icons.alarm),
                       onPressed: () async {
                         selectTime(context, toTime);
@@ -345,9 +344,11 @@ TimeOfDay fromTime = TimeOfDay.now();
                   RaisedButton(
                     color: Colors.green[700],
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0)
-                    ),
-                    child: Text("Submit",style: TextStyle(color: Colors.grey[200],)),
+                        borderRadius: BorderRadius.circular(5.0)),
+                    child: Text("Submit",
+                        style: TextStyle(
+                          color: Colors.grey[200],
+                        )),
                     onPressed: () {
                       if (formKey.currentState.validate()) {
                         showAlertDialog(context);
@@ -360,24 +361,26 @@ TimeOfDay fromTime = TimeOfDay.now();
                   RaisedButton(
                     color: Colors.green[700],
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0)
-                    ),
-                    child: Text("Reset",style: TextStyle(color: Colors.grey[200],)),
+                        borderRadius: BorderRadius.circular(5.0)),
+                    child: Text("Reset",
+                        style: TextStyle(
+                          color: Colors.grey[200],
+                        )),
                     onPressed: () {
                       Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => MainScreen()));
+                          MaterialPageRoute(
+                              builder: (context) => MainScreen()));
                     },
                   ),
                 ],
               ),
             ],
           ),
-        )
-    )
-    );
+        )));
   }
 }
+
 showAlertDialog(BuildContext context) {
   Widget cancel = FlatButton(
     textColor: Colors.green[700],
@@ -391,12 +394,9 @@ showAlertDialog(BuildContext context) {
     child: Text('ACCEPT'),
     onPressed: () {
       Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => Confirm())
-      );
+          context, MaterialPageRoute(builder: (context) => Confirm()));
     },
   );
-
 
   AlertDialog alert = AlertDialog(
     title: Text('Submit'),

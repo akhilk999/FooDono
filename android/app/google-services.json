@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "845675282322",
+    "firebase_url": "https://test-d46f8.firebaseio.com",
+    "project_id": "test-d46f8",
+    "storage_bucket": "test-d46f8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845675282322:android:512fd6dc5b5089cccbcb4b",
+        "android_client_info": {
+          "package_name": "com.thecompilers.foodono"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "845675282322-717kv6vluujt311t83kfkl9nk0f308na.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdkDvCZoXGiaKfeZARO4CRG5mjoPh4vNw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "845675282322-717kv6vluujt311t83kfkl9nk0f308na.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

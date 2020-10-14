@@ -1,21 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'dart:async';
-import 'dart:convert';
-import 'package:zipcode_screen/models/model.dart';
+import 'models/model.dart';
 import 'confirm.dart';
-
-void main() {
-  runApp(MaterialApp(
-    title: 'Navigation Basics',
-    home: Consumer(),
-  ));
-}
+//import 'package:geocoder/geocoder.dart';
 
 class Consumer extends StatefulWidget {
   // This widget is the root of your application.
+  final FoodBank bank;
+  Consumer(this.bank);
   @override
   _ConsumerState createState() => _ConsumerState();
 }
@@ -24,54 +16,44 @@ class _ConsumerState extends State<Consumer> {
   GoogleMapController mapController;
   bool _initialized = false;
   bool _error = false;
-  final fb = FirebaseDatabase.instance;
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
   }
 
-  // Define an async function to initialize FlutterFire
-  void initializeFlutterFire() async {
-    try {
-      // Wait for Firebase to initialize and set `_initialized` state to true
-      await Firebase.initializeApp();
-      setState(() {
-        _initialized = true;
-      });
-    } catch (e) {
-      // Set `_error` state to true if Firebase initialization fails
-      setState(() {
-        _error = true;
-      });
-    }
-  }
-
   @override
   void initState() {
-    initializeFlutterFire();
+    //initializeFlutterFire();
     super.initState();
   }
 
 /* void _onMapCreated(GoogleMapController controller) {
      = controller;
   }
+
+  void _getLatandLong() async {
+    // From a query
+    final query = "1600 Amphiteatre Parkway, Mountain View";
+    var addresses = await Geocoder.local.findAddressesFromQuery(query);
+    var first = addresses.first;
+    print("${first.featureName} : ${first.coordinates}");
+  }
 */
   @override
   Widget build(BuildContext context) {
     // Show a loader until FlutterFire is initialized
-    /*
-    if (!_initialized) {
-      return Loading();
-    }
-*/
-    final ref = fb.reference();
-    var retrievedName;
+
+    var appt_daytime = widget.bank.adate + " @ " + widget.bank.atime;
     var lists;
+    var address = widget.bank.aaddress + ",";
+
     return MaterialApp(
         home: Scaffold(
             appBar: AppBar(
               centerTitle: true,
-              title: Text("FooDono",),
+              title: Text(
+                "FooDono",
+              ),
               backgroundColor: Colors.green[700],
             ),
             body: SingleChildScrollView(
@@ -79,121 +61,76 @@ class _ConsumerState extends State<Consumer> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                Container(
-                  child: Text(
-                    "Minnie's Food Pantry",
-                  style: TextStyle(fontSize: 25),
-                  ),
-              padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
-                 ),
-                Container(
-                  child: Text(
-                    "661 18th St",
-                    style: TextStyle(fontSize: 25),
-                  ),
-                  padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
-                ),
-                Container(
-                  child: Text(
-                    "Oct 15th @ 2:00 PM",
-                    style: TextStyle(fontSize: 25),
-                  ),
-                  padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-                ),
                     Container(
-                        height: 325,
-                        width: 350,
-                        child: GoogleMap(
-                          onMapCreated: _onMapCreated,
-                          initialCameraPosition: CameraPosition(
-                              target: LatLng(33.024817, -96.706692), zoom: 16),
-                        ),
-                        padding: EdgeInsets.fromLTRB(25,0,0,0),
-                    ),
-                Container(
-                  height: 75.0,
-                  width: 350.0,
-                  child: Text(
-                    "Offers Food",
-                    style: TextStyle(fontSize: 25),
-                  ),
-                  padding: EdgeInsets.fromLTRB(90, 25, 60, 20),
-                ),
-                Container(
-                  height: 75.0,
-                  width: 300.0,
-                  padding: EdgeInsets.fromLTRB(50, 20, 50, 20),
-                  child: RaisedButton(
-                      color: Colors.green[700],
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5.0)
+                      child: Text(
+                        widget.bank.aname,
+                        style: TextStyle(fontSize: 20),
                       ),
-                      child: Text('Confirm Timing',style: TextStyle(color: Colors.grey[200],)),
-                      onPressed: () {
-                        ref.child("foodbanks").once().then((DataSnapshot data) {
-                          //print(data.value);
-                          //List<FoodBanks> foodbanks = [];
-                          //Map<String, dynamic> foodBanks = jsonDecode(data.value);
-                          FoodBankList foodbanks =
-                          FoodBankList.fromJson(data.value);
-                          print(foodbanks.foodbanks[0].aaddress);
-
-                          //print(values);
-                          /*
-                          foodbanks.forEach((key, values) {
-                            print(values);
-                            //foodbanks.add(FoodBanks.fromSnapshot(values));
-                          });
-                          print(foodbanks);
-                          //print(data.key);
-                          //     ref.child("Location4").set("Plano");
-                          setState(() {
-                            retrievedName = data.value;
-                          }); */
-
-                          /*
-                          List jsonResponse = json.decode(data.value);
-                          print(jsonResponse
-                              .map((bank) => new FoodBanks.fromSnapshot(bank))
-                              .toList()); */
-                        });
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Confirm()),
-                        );
-                      }),
-                )
-              ]),
-            )));
-    //);
-/*
-    FutureBuilder(
-        future: ref.once(),
-        builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
-          if (snapshot.hasData) {
-            lists.clear();
-            Map<dynamic, dynamic> values = snapshot.data.value;
-            values.forEach((key, values) {
-              lists.add(values);
-            });
-            return new ListView.builder(
-                shrinkWrap: true,
-                itemCount: lists.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Card(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text("Name: " + lists[index]["name"]),
-                        Text("Age: " + lists[index]["age"]),
-                        Text("Type: " + lists[index]["type"]),
-                      ],
+                      padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
                     ),
-                  );
-                });
-          }
-          return CircularProgressIndicator();
-        }); */
+                    Container(
+                      child: Text(
+                        address,
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
+                    ),
+                    Container(
+                      child: Text(
+                        widget.bank.acity,
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
+                    ),
+                    Container(
+                      child: Text(
+                        appt_daytime,
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
+                    ),
+                    Container(
+                      height: 325,
+                      width: 350,
+                      child: GoogleMap(
+                        onMapCreated: _onMapCreated,
+                        initialCameraPosition: CameraPosition(
+                            target: LatLng(33.024817, -96.706692), zoom: 16),
+                      ),
+                      padding: EdgeInsets.fromLTRB(25, 0, 0, 0),
+                    ),
+                    Container(
+                      height: 75.0,
+                      width: 350.0,
+                      child: Text(
+                        "Offers Food and Clothing",
+                        style: TextStyle(fontSize: 15),
+                      ),
+                      padding: EdgeInsets.fromLTRB(90, 25, 60, 20),
+                    ),
+                    Container(
+                      height: 75.0,
+                      width: 300.0,
+                      padding: EdgeInsets.fromLTRB(50, 20, 50, 20),
+                      child: RaisedButton(
+                          color: Colors.green[700],
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0)),
+                          child: Text('Confirm Timing',
+                              style: TextStyle(
+                                color: Colors.grey[200],
+                              )),
+                          onPressed: () {
+                            //  _getLatandLong();
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Confirm()),
+                            );
+                          }),
+                    )
+                  ]),
+            )));
   }
 }
 
