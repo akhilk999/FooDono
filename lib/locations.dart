@@ -73,8 +73,19 @@ class _Location extends State<LocationList> {
       home: Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: Text(
-              "FooDono",
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  child: Image.asset('images/appbaricon.png', scale: 3),
+                ),
+                Container(
+                  width: 7,
+                ),
+                Container(
+                  child: Text('FooDono'),
+                )
+              ],
             ),
             backgroundColor: Colors.green[700],
           ),
@@ -101,28 +112,31 @@ class _Location extends State<LocationList> {
                             },
                             child: Card(
                                 child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  //crossAxisAlignment: CrossAxisAlignment.center,
+                                  //mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
                                     Text(" "),
-                                    Text("Name:" + banks[index].aname,
+                                    Text("Name: " + banks[index].aname,
                                         style: TextStyle(
-                                            color: Colors.white, fontSize: 20)),
+                                            color: Colors.white, fontSize: 17)),
                                     Text(
                                         "Address: " +
                                             banks[index].aaddress +
-                                            "," +
+                                            ", " +
                                             banks[index].acity,
                                         style: TextStyle(
-                                            color: Colors.white, fontSize: 20)),
+                                            color: Colors.white, fontSize: 17)),
+                                    Text(" ", style: TextStyle(fontSize: 5)),
                                     Text("Date: " + banks[index].adate,
                                         style: TextStyle(
-                                            color: Colors.white, fontSize: 20)),
-                                    Text("Time:" + banks[index].atime,
+                                            color: Colors.white, fontSize: 17)),
+                                    Text("Time: " + banks[index].atime,
                                         style: TextStyle(
-                                            color: Colors.white, fontSize: 20)),
+                                            color: Colors.white, fontSize: 17)),
+                                    Text(" "),
                                   ],
                                 ),
-                                color: Colors.green[400]));
+                                color: Colors.green[600]));
                       });
                 }
                 return CircularProgressIndicator();

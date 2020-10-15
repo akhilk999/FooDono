@@ -51,13 +51,23 @@ class _ConsumerState extends State<Consumer> {
         home: Scaffold(
             appBar: AppBar(
               centerTitle: true,
-              title: Text(
-                "FooDono",
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    child: Image.asset('images/appbaricon.png', scale: 3),
+                  ),
+                  Container(
+                    width: 7,
+                  ),
+                  Container(
+                    child: Text('FooDono'),
+                  )
+                ],
               ),
               backgroundColor: Colors.green[700],
             ),
-            body: SingleChildScrollView(
-              child: Column(
+              body: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -66,28 +76,36 @@ class _ConsumerState extends State<Consumer> {
                         widget.bank.aname,
                         style: TextStyle(fontSize: 20),
                       ),
-                      padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
+                    ),
+                    Container(
+                      height: 20,
                     ),
                     Container(
                       child: Text(
                         address,
                         style: TextStyle(fontSize: 20),
                       ),
-                      padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
+                    ),
+                    Container(
+                      height: 20,
                     ),
                     Container(
                       child: Text(
                         widget.bank.acity,
                         style: TextStyle(fontSize: 20),
                       ),
-                      padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
+                    ),
+                    Container(
+                      height: 20,
                     ),
                     Container(
                       child: Text(
                         appt_daytime,
                         style: TextStyle(fontSize: 20),
                       ),
-                      padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
+                    ),
+                    Container(
+                      height: 20,
                     ),
                     Container(
                       height: 325,
@@ -97,16 +115,18 @@ class _ConsumerState extends State<Consumer> {
                         initialCameraPosition: CameraPosition(
                             target: LatLng(33.024817, -96.706692), zoom: 16),
                       ),
-                      padding: EdgeInsets.fromLTRB(25, 0, 0, 0),
                     ),
                     Container(
-                      height: 75.0,
-                      width: 350.0,
+                      height: 20,
+                    ),
+                    Container(
                       child: Text(
                         "Offers Food and Clothing",
-                        style: TextStyle(fontSize: 15),
+                        style: TextStyle(fontSize: 17.5),
                       ),
-                      padding: EdgeInsets.fromLTRB(90, 25, 60, 20),
+                    ),
+                    Container(
+                      height: 17.5,
                     ),
                     Container(
                       height: 75.0,
@@ -130,7 +150,7 @@ class _ConsumerState extends State<Consumer> {
                           }),
                     )
                   ]),
-            )));
+    ));
   }
 }
 

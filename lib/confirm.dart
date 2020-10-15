@@ -7,7 +7,20 @@ class Confirm extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green[700],
-        title: Text("FooDono"),
+        title: Row(
+          //mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              child: Image.asset('images/appbaricon.png', scale: 3),
+            ),
+            Container(
+              width: 7,
+            ),
+            Container(
+              child: Text('FooDono'),
+            )
+          ],
+        ),
         centerTitle: true,
       ),
       body: Column(

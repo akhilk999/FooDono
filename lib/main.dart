@@ -21,24 +21,25 @@ class MainScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              child:Text(
+              child: Image.asset('images/mainscreenicon.png', scale: 0.9),
+              /*Text(
                   'FooDono',
                   style: TextStyle(
                       fontSize: 40,
                     color: Colors.white,
                       fontWeight: FontWeight.bold
                   )
-              ),
+              ),*/
             ),
             Flexible(
               child: FractionallySizedBox(
-                heightFactor: 0.7,
+                heightFactor: 0.4,
               ),
             ),
             Flexible(
               child: FractionallySizedBox(
                 widthFactor: 0.4,
-                heightFactor: 0.23,
+                heightFactor: 0.3,
                 child: RaisedButton(
                   color: Colors.grey[200],
                   shape: RoundedRectangleBorder(
@@ -59,13 +60,13 @@ class MainScreen extends StatelessWidget {
             ),
             Flexible(
               child: FractionallySizedBox(
-                heightFactor: 0.3,
+                heightFactor: 0.55,
               ),
             ),
             Flexible(
               child: FractionallySizedBox(
                 widthFactor: 0.4,
-                heightFactor: 0.23,
+                heightFactor: 0.3,
                 child: RaisedButton(
                   color: Colors.grey[200],
                   shape: RoundedRectangleBorder(

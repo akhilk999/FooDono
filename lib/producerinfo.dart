@@ -69,7 +69,20 @@ class _ProducerState extends State<Producer> {
         //resizeToAvoidBottomPadding: false,
         appBar: AppBar(
           centerTitle: true,
-          title: Text('FooDono'),
+          title: Row(
+            //mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                child: Image.asset('images/appbaricon.png', scale: 3),
+              ),
+              Container(
+                width: 7,
+              ),
+              Container(
+                child: Text('FooDono'),
+              )
+            ],
+          ),
           backgroundColor: Colors.green[700],
         ),
         body: SingleChildScrollView(
