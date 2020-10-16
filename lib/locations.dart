@@ -69,12 +69,11 @@ class _Location extends State<LocationList> {
     var retrievedName;
     var lists;
 
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
           appBar: AppBar(
-            centerTitle: true,
+            //centerTitle: true,
             title: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              //mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
                   child: Image.asset('images/appbaricon.png', scale: 3),
@@ -197,8 +196,7 @@ class _Location extends State<LocationList> {
                             );
                           }),
                     ), */
-          ),
-    );
+          );
     //);
 /*
     FutureBuilder(

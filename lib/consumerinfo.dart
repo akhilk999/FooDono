@@ -47,12 +47,11 @@ class _ConsumerState extends State<Consumer> {
     var lists;
     var address = widget.bank.aaddress + ",";
 
-    return MaterialApp(
-        home: Scaffold(
+    return Scaffold(
             appBar: AppBar(
-              centerTitle: true,
+              //centerTitle: true,
               title: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                //mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                     child: Image.asset('images/appbaricon.png', scale: 3),
@@ -150,7 +149,7 @@ class _ConsumerState extends State<Consumer> {
                           }),
                     )
                   ]),
-    ));
+    );
   }
 }
 
