@@ -125,7 +125,8 @@ class _MyAppState extends State<ZipCode> {
                     )),
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
-                    showAlertDialog(context);
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (context) => LocationList()));
                   }
                 },
               ),

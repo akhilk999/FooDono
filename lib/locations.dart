@@ -89,58 +89,61 @@ class _Location extends State<LocationList> {
             ),
             backgroundColor: Colors.green[700],
           ),
-          body: FutureBuilder(
-              future: ref.child("foodbanks").once(),
-              builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
-                if (snapshot.hasData) {
-                  //lists.clear();
-                  foodbanks = FoodBankList.fromJson(snapshot.data.value);
-                  print(foodbanks.foodbanks);
-                  banks.addAll(foodbanks.foodbanks);
-                  return new ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: banks.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        Consumer(banks[index])),
-                              );
-                            },
-                            child: Card(
-                                child: Column(
-                                  //crossAxisAlignment: CrossAxisAlignment.center,
-                                  //mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Text(" "),
-                                    Text("Name: " + banks[index].aname,
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 17)),
-                                    Text(
-                                        "Address: " +
-                                            banks[index].aaddress +
-                                            ", " +
-                                            banks[index].acity,
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 17)),
-                                    Text(" ", style: TextStyle(fontSize: 5)),
-                                    Text("Date: " + banks[index].adate,
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 17)),
-                                    Text("Time: " + banks[index].atime,
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 17)),
-                                    Text(" "),
-                                  ],
-                                ),
-                                color: Colors.green[600]));
-                      });
-                }
-                return CircularProgressIndicator();
-              })
+          body: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: FutureBuilder(
+                future: ref.child("foodbanks").once(),
+                builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
+                  if (snapshot.hasData) {
+                    //lists.clear();
+                    foodbanks = FoodBankList.fromJson(snapshot.data.value);
+                    print(foodbanks.foodbanks);
+                    banks.addAll(foodbanks.foodbanks);
+                    return new ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: banks.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          Consumer(banks[index])),
+                                );
+                              },
+                              child: Card(
+                                  child: Column(
+                                    //crossAxisAlignment: CrossAxisAlignment.center,
+                                    //mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Text(" "),
+                                      Text("Name: " + banks[index].aname,
+                                          style: TextStyle(
+                                              color: Colors.white, fontSize: 17)),
+                                      Text(
+                                          "Address: " +
+                                              banks[index].aaddress +
+                                              ", " +
+                                              banks[index].acity,
+                                          style: TextStyle(
+                                              color: Colors.white, fontSize: 17)),
+                                      Text(" ", style: TextStyle(fontSize: 5)),
+                                      Text("Date: " + banks[index].adate,
+                                          style: TextStyle(
+                                              color: Colors.white, fontSize: 17)),
+                                      Text("Time: " + banks[index].atime,
+                                          style: TextStyle(
+                                              color: Colors.white, fontSize: 17)),
+                                      Text(" "),
+                                    ],
+                                  ),
+                                  color: Colors.green[600]));
+                        });
+                  }
+                  return CircularProgressIndicator();
+                }),
+          )
 
           /*
                     Container(

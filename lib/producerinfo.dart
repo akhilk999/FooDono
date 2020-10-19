@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'models/model.dart';
 import 'main.dart';
 import 'confirm.dart';
 
@@ -19,6 +21,7 @@ class _ProducerState extends State<Producer> {
   final textControl2 = TextEditingController();
   final textControl3 = TextEditingController();
   int charLength2 = 0;
+  final fb = FirebaseDatabase.instance.reference();
 
   _onChanged(String value) {
     setState(() {
@@ -364,7 +367,9 @@ class _ProducerState extends State<Producer> {
                         )),
                     onPressed: () {
                       if (formKey.currentState.validate()) {
-                        showAlertDialog(context);
+                        createRecord();
+                        Navigator.push(
+                            context, MaterialPageRoute(builder: (context) => Confirm()));
                       }
                     },
                   ),
@@ -392,37 +397,49 @@ class _ProducerState extends State<Producer> {
           ),
         )));
   }
-}
+  showAlertDialog(BuildContext context) {
+    Widget cancel = FlatButton(
+      textColor: Colors.green[700],
+      child: Text('CANCEL'),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+    Widget cont = FlatButton(
+      textColor: Colors.green[700],
+      child: Text('ACCEPT'),
+      onPressed: () {
+        createRecord();
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Confirm()));
+      },
+    );
 
-showAlertDialog(BuildContext context) {
-  Widget cancel = FlatButton(
-    textColor: Colors.green[700],
-    child: Text('CANCEL'),
-    onPressed: () {
-      Navigator.of(context).pop();
-    },
-  );
-  Widget cont = FlatButton(
-    textColor: Colors.green[700],
-    child: Text('ACCEPT'),
-    onPressed: () {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Confirm()));
-    },
-  );
-
-  AlertDialog alert = AlertDialog(
-    title: Text('Submit'),
-    content: Text('Are you sure you want to submit to show to Visitors?'),
-    actions: [
-      cancel,
-      cont,
-    ],
-  );
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return alert;
-    },
-  );
+    AlertDialog alert = AlertDialog(
+      title: Text('Submit'),
+      content: Text('Are you sure you want to submit to show to Visitors?'),
+      actions: [
+        cancel,
+        cont,
+      ],
+    );
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+  createRecord(){
+    fb.child('foodbanks').once().then((DataSnapshot snapshot) {
+      FoodBankList foodbanks = FoodBankList.fromJson(snapshot.value);
+      fb.child("foodbanks").child(foodbanks.foodbanks.length.toString()).set({
+        'name': textControl.text,
+        'city': textControl2.text,
+        'address': textControl3.text,
+        'date': '${formatter.format(fromDate)}',
+        'time': '${_time.format(context)}'
+      });
+    });
+  }
 }
