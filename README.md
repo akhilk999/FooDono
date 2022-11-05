@@ -1,16 +1,11 @@
-# zipcode_screen
+# FoodDono
 
-A new Flutter application.
+Built for 2020 Congressional App Challenge TX District 3 by Akhil Kasamsetty, Vedanth Venkatesh, and Shyam Bhagavatula
 
-## Getting Started
+## Our App
 
-This project is a starting point for a Flutter application.
+FooDono is an app that connects the food banks and its visitors. This is through signup forms created by the food banks for visitors to enter to promote a more organized system that can help more people.
 
-A few resources to get you started if this is your first Flutter project:
+## Resources
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Our app was built through the Flutter UI using Dart. We used the Firebase API to store information regarding the signups of the members.
