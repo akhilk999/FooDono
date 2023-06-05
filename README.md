@@ -9,3 +9,6 @@ FooDono is an app that connects the food banks and its visitors. This is through
 ## Resources
 
 Our app was built through the Flutter UI using Dart. We used the Firebase API to store information regarding the signups of the members.
+
+## Demo Video
+https://www.youtube.com/watch?v=XauwXcqWI1g
